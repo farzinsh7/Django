@@ -1,0 +1,65 @@
+{% extends 'registration/base.html' %}
+{% block meta_title %}{% block title %}پیام ها{% endblock %}{% endblock %}
+{% block content %}
+    {% if object_list %}
+        <div class="card">
+            <!-- /.card-header -->
+            <div class="card-body table-responsive p-0">
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th>نام</th>
+                        <th>شماره تماس</th>
+                        <th>زمان درخواست</th>
+                        <th>وضعیت</th>
+                        <th>توضیحات</th>
+                        <th>دکمه ها</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for item in object_list %}
+                        <tr>
+                            <td>{{ item.name }}</td>
+                            <td>{{ item.phone }}</td>
+                            <td>{{ item.j_created }}</td>
+                            {% if item.status == True %}
+                                <td><span class="badge badge-success ">دیده شده</span></td>
+                            {% else %}
+                                <td><span class="badge badge-warning ">دیده نشده</span></td>
+                            {% endif %}
+                            <td>{{ item.description|truncatewords:10 }}</td>
+                            <td>
+                                <ul class="list">
+                                    <li class="list-group mb-1"><a
+                                            href="{% url 'account:contact_form_delete' item.pk %}"
+                                            class="btn btn-danger">حذف درخواست</a></li>
+                                    <li class="list-group mb-1"><a
+                                            href="{% url 'account:contact_form_update' item.pk %}"
+                                            class="btn btn-primary">نمایش درخواست</a></li>
+                                </ul>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <!-- /.card-body -->
+        </div>
+        <div class="col-lg-12 text-center">
+            <ul class="pagination">
+                {% if page_obj.has_previous %}
+                    <li><a href="?page={{ page_obj.previous_page_number }}">«</a></li>
+                {% endif %}
+                {% for page in paginator.page_range %}
+                    <li class="{% if page == page_obj.number %}active{% endif %}"><a
+                            href="?page={{ page }}">{{ page }}</a></li>
+                {% endfor %}
+                {% if page_obj.has_next %}
+                    <li><a href="?page={{ page_obj.next_page_number }}">»</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    {% else %}
+        <h3>پیامی برای نمایش وجود ندارد</h3>
+    {% endif %}
+{% endblock %}

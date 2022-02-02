@@ -1,0 +1,115 @@
+{% extends 'base/main_base.html' %}
+{% load static %}
+{% block seo_tags %}
+    <meta name="description" content="سوالات متداول"/>
+    <meta property="og:locale" content="fa_IR"/>
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="سوالات متداول"/>
+    <meta property="og:description" content="سوالات متداول"/>
+        <meta property="og:url" content="{% url 'page:faq' %}"/>
+{% endblock seo_tags %}
+{% block title %}
+    سوالات متداول
+{% endblock title %}
+{% block content %}
+    <section class="breadcrumb-option spad set-bg" data-setbg="{% static 'img/breadcrumb-bg.jpg' %}">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="breadcrumb__text">
+                        <h2>سوالات متداول</h2>
+                        <div class="breadcrumb__links">
+                            <a href="{% url 'page:home' %}">خانه</a>
+                            <span>سوالات متداول</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="container rtl my-5">
+        <div class="row">
+            <div id="accordion" class="col-12">
+                <div class="card w-100">
+                    <div class="card-header" id="headingOne">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne"
+                                    aria-expanded="true" aria-controls="collapseOne">
+                                1- توصیه های قبل از عمل
+                            </button>
+                        </h5>
+                    </div>
+
+                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                        <div class="card-body">
+                            1. سیگار، قلیون و مشروب 10 روز قبل از عمل مصرف نشود.<br>
+                            2. گوشت قرمز، انار، چای سبز، قهوه، پسته و زنجبیل و... انواع خوراکی‌ها که باعث افزایش گردش
+                            خون می‌شود را استفاده نکنید.<br>
+                            3. شب قبل از عمل دوش بگیرید و برای مراجعه به کلینیک لباس جلو دکمه دار بپوشید.<br>
+                            4. بالشت دور گردنی تهیه کنید.<br>
+                            5. از دو روز قبل از عمل قرص سفکسیم 400 یا سیپروفلوکاسین500 هر 12 ساعت یک عدد بخورید و یا قرص
+                            سفالکسین500 هر 6 ساعت یک عدد و تا 5 روز بعد از عمل ادامه ‌دهید.<br>
+                            6. از مصرف داروهایی مثل آسپرین خودداری کنید و مسکن‌هایی مثل ژلوفن، پروفن و نوافن استفاده
+                            نکنید.
+
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header" id="headingTwo">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo"
+                                    aria-expanded="false" aria-controls="collapseTwo">
+                                2- مراقبت های بعد از عمل
+                            </button>
+                        </h5>
+                    </div>
+                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                        <div class="card-body">
+                            1. تا 5 روز بعد از عمل استفاده از آنتی بیوتیک الزامی است. <br>
+                            2. از شب عمل به مدت 14 روز بالشت دورگردنی استفاده کنید و با زاویه 45درجه نیمه نشسته بخوابید.
+                            (به هیچ عنوان نباید به پهلو بخوابید و یا سرتان را خم کنید.)<br>
+                            3. تا یک هفته بعد از کاشت در حالت روزمره و بیداری نیز سرتان را خم نکنید. <br>
+                            4. تا یک هفته بعد از کاشت از خوردن خوراکی‌های ذکر شده خودداری کنید: نمک، گوشت، زنجبیل، چای
+                            سبز. <br>
+                            5. سیگار و قلیان استفاده نکنید (لطفا ممنوعیت استفاده از سیگار را جدی بگیرید زیرا سیگار مانع
+                            اکسیژن رسانی به بافت‌های کاشت شما می‌شود) <br>
+                            6. طی هفته اول کاشت از نزدیکی جنسی بپرهیزید. <br>
+                            7. از روز 10 قرص تقویتی هرویت مصرف شود. <br>
+                            8. در صورت احساس درد فقط از استامینوفن کدئین و شیاف دیکنوفناک هر 6 ساعت یک عدد استفاده کنید،
+                            و از مسکن‌هایی مثل: ژلوفن، نوافن و پروفن خودداری کنید. <br>
+                            2.9ماه بعد از کاشت از برداشتن وزنه های سنگین، ورزش‌های سنگین خودداری کنید. <br>
+                            10. شب اول سعی کنید شام سبک بخورید و خوب بخوابید. <br>
+                            11. استفاده از نوشیدنی‌های مثل آب سیب، آب کرفس، آناناس و چای کمرنگ مصرف شود.
+
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header" id="headingThree">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree"
+                                    aria-expanded="false" aria-controls="collapseThree">
+                                3- عوارض پس از کاشت مو
+                            </button>
+                        </h5>
+                    </div>
+                    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                        <div class="card-body">
+                            1. تورم پوست (ورم در ناحیه پیشانی و صورت) رعایت زاویه خواب، استفاده از مایعات فراوان. <br>
+                            2. خونریزی خفیف<br>
+                            3. بی حسی و مورمور شدن خفیف در منطقه دهنده مو<br>
+                            4. حساسیت به داروهای اغلب خفیف بود و با مسکن تجویز شده قابل کنترل می‌باشد. <br>
+                            6. خارش<br>
+                            7. کبره(کراست) در محل کاشت مو<br>
+                            8. پوسته ریزی سر<br>
+                            9. جابه جا شدن یا بیرون آمدن گرافت‌ها<br>
+                            10. جوش‌های چرکی<br>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

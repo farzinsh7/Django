@@ -1,0 +1,18 @@
+{% extends 'registration/base.html' %}
+{% load crispy_forms_tags %}
+{% block meta_title %}{% block title %}حذف تصویر{% endblock %}{% endblock %}
+{% block content %}
+    <div class="col-lg-6 mx-auto">
+        <div class="card card-danger">
+            <div class="card-header">
+                <h3 class="card-title mb-0 float-left">حذف تصویر</h3>
+            </div>
+            <div class="card-body">
+                <form method="post">{% csrf_token %}
+    <p>آیا از حذف تصویر "{{ object }}" مطمئن هستید ؟</p>
+    <input class="btn btn-outline-danger" type="submit" value="حذف تصویر">
+</form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,58 @@
+{% extends 'registration/base.html' %}
+{% load thumbnail %}
+{% block meta_title %}{% block title %}گالری عکس ها{% endblock %}{% endblock %}
+{% block content %}
+        {% if object_list %}
+    <div class="card">
+        <!-- /.card-header -->
+        <div class="card-body table-responsive p-0">
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th>تصویر</th>
+                    <th>عنوان</th>
+                    <th>تاریخ انتشار</th>
+                    <th>دکمه ها</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for pic in object_list %}
+                    <tr>
+                        <td>
+                        {% thumbnail pic.image "170x120" crop="center" as im %}
+                                    <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}">
+                                {% endthumbnail %}
+                        </td>
+                        <td>{{ pic.title }}</td>
+                        <td>{{ pic.j_publish }}</td>
+                        <td>
+                            <ul class="list">
+                                <li class="list-group mb-1"><a href="{% url 'account:gallery_delete' pic.pk %}"
+                                                               class="btn btn-danger">حذف عکس</a></li>
+                            </ul>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <!-- /.card-body -->
+    </div>
+    <div class="col-lg-12 text-center">
+                    <ul class="pagination">
+                            {% if page_obj.has_previous %}
+                                <li><a href="?page={{ page_obj.previous_page_number }}">«</a></li>
+                            {% endif %}
+                            {% for page in paginator.page_range %}
+                                <li class="{% if page == page_obj.number %}active{% endif %}"><a
+                                        href="?page={{ page }}">{{ page }}</a></li>
+                            {% endfor %}
+                            {% if page_obj.has_next %}
+                                <li><a href="?page={{ page_obj.next_page_number }}">»</a></li>
+                            {% endif %}
+                        </ul>
+                </div>
+    {% else %}
+        <h3>تصویری برای نمایش وجود ندارد</h3>
+    {% endif %}
+{% endblock %}

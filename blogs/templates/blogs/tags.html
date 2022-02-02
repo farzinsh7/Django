@@ -1,0 +1,80 @@
+{% extends 'base/main_base.html' %}
+{% load static %}
+{% load ratings %}
+{% load thumbnail %}
+{% block seo_tags %}
+    <meta name="description" content="آخرین اخبار و مقالات کلینیک افرا کاشت"/>
+    <meta property="og:locale" content="fa_IR"/>
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="تگ: {{ tag.title }}"/>
+    <meta property="og:description" content="آخرین اخبار و مقالات کلینیک افرا کاشت"/>
+    <meta property="og:url" content="{% url 'blog:tag' tag.slug %}"/>
+{% endblock seo_tags %}
+{% block title %}
+    تگ: {{ tag.title }}
+{% endblock title %}
+{% block content %}
+    <!-- Breadcrumb Section Begin -->
+    <section class="breadcrumb-option spad set-bg" data-setbg="{% static 'img/breadcrumb-bg.jpg' %}">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="breadcrumb__text">
+                        <h2>تگ: {{ tag.title }}</h2>
+                        <div class="breadcrumb__links">
+                            <a href="{% url 'page:home' %}">خانه</a>
+                            <span>تگ ها</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Breadcrumb Section End -->
+    <!-- Blog Section Begin -->
+    <section class="blog rtl spad">
+        <div class="container">
+            <div class="row">
+                {% for blog in object_list %}
+                    <div class="col-lg-4 col-md-6 col-sm-6">
+                        <div class="blog__item">
+                            <div class="blog__item__pic">
+                                {% thumbnail blog.image_thumbnail "360x200" crop="center" as im %}
+                                    <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}">
+                                {% endthumbnail %}
+                            </div>
+                            <div class="blog__item__text">
+                                <h5><a href="{% url 'blog:blog_detail' blog.slug %}">{{ blog.title }}</a></h5>
+                                {% ratings blog %}
+                                <ul>
+                                    <li><span class="fa fa-list-ul"></span> دسته‌بندی:
+                                        {% for cat in blog.category.all %}
+                                            {{ cat.title }}
+                                        {% endfor %}</li>
+                                </ul>
+                                <ul>
+                                    <li><span class="fa fa-calendar"></span> {{ blog.j_publish }}</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+                <div class="col-lg-12 text-center">
+                    <ul class="pagination">
+                        {% if page_obj.has_previous %}
+                            <li><a href="?page={{ page_obj.previous_page_number }}">«</a></li>
+                        {% endif %}
+                        {% for page in paginator.page_range %}
+                            <li class="{% if page == page_obj.number %}active{% endif %}"><a
+                                    href="?page={{ page }}">{{ page }}</a></li>
+                        {% endfor %}
+                        {% if page_obj.has_next %}
+                            <li><a href="?page={{ page_obj.next_page_number }}">»</a></li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Blog Section End -->
+{% endblock content %}

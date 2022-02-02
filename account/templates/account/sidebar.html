@@ -1,0 +1,215 @@
+{% load static %}
+<aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <!-- Brand Logo -->
+    <a href="#" class="brand-link bg-light">
+        <img src="{% static 'img/icons/afrafavicon.png' %}" alt="afra-kasht"
+             class="brand-image img-circle elevation-3"
+             style="opacity: .8">
+        <span class="brand-text font-weight-light">پنل افرا کاشت</span>
+    </a>
+    <div class="sidebar">
+        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+            <div class="nav-link">
+                <i class="text-warning fa fa-user"></i>
+            </div>
+            <div class="info">
+                <a href="#" class="d-block">{% if user.get_full_name %}{{ user.get_full_name }}{% else %}{{ user.username }}{% endif %}</a>
+            </div>
+        </div>
+        <nav class="mt-2">
+            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
+                data-accordion="false">
+                {% if user.is_superuser %}
+                    <li class="nav-item has-treeview {% if request.resolver_match.url_name == 'panel' %}menu-open{% elif request.resolver_match.url_name == 'blog_create' %}menu-open{% endif %}">
+                        <a href="#"
+                           class="nav-link {% if request.resolver_match.url_name == 'panel' %}active{% elif request.resolver_match.url_name == 'blog_create' %}active{% endif %}">
+                            <i class="nav-icon fas fa-th"></i>
+                            <p>
+                                مقالات
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{% url 'account:panel' %}"
+                                   class="nav-link {% if request.resolver_match.url_name == 'panel' %}active{% endif %}">
+                                    <i class="far fas fa-list"></i>
+                                    <p>لیست مقالات</p>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{% url 'account:blog_create' %}"
+                                   class="nav-link {% if request.resolver_match.url_name == 'blog_create' %}active{% endif %}">
+                                    <i class="far fas fa-plus"></i>
+                                    <p>افزودن مقاله</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item has-treeview {% if request.resolver_match.url_name == 'category' %}menu-open{% elif request.resolver_match.url_name == 'category_create' %}menu-open{% endif %}">
+                        <a href="#"
+                           class="nav-link {% if request.resolver_match.url_name == 'category' %}active{% elif request.resolver_match.url_name == 'category_create' %}active{% endif %}">
+                            <i class="nav-icon fas fa-table"></i>
+                            <p>
+                                دسته بندی ها
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{% url 'account:category' %}"
+                                   class="nav-link {% if request.resolver_match.url_name == 'category' %}active{% endif %}">
+                                    <i class="far fas fa-list"></i>
+                                    <p>لیست دسته بندی ها</p>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{% url 'account:category_create' %}"
+                                   class="nav-link {% if request.resolver_match.url_name == 'category_create' %}active{% endif %}">
+                                    <i class="far fas fa-plus"></i>
+                                    <p>افزودن دسته بندی</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item has-treeview {% if request.resolver_match.url_name == 'tags' %}menu-open{% elif request.resolver_match.url_name == 'tag_create' %}menu-open{% endif %}">
+                        <a href="#"
+                           class="nav-link {% if request.resolver_match.url_name == 'tags' %}active{% elif request.resolver_match.url_name == 'tag_create' %}active{% endif %}">
+                            <i class="nav-icon fas fa-tag"></i>
+                            <p>
+                                برچسب ها
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{% url 'account:tags' %}"
+                                   class="nav-link {% if request.resolver_match.url_name == 'tags' %}active{% endif %}">
+                                    <i class="far fas fa-tags"></i>
+                                    <p>لیست برچسب ها</p>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{% url 'account:tag_create' %}"
+                                   class="nav-link {% if request.resolver_match.url_name == 'tag_create' %}active{% endif %}">
+                                    <i class="far fas fa-plus"></i>
+                                    <p>افزودن برچسب</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item has-treeview {% if request.resolver_match.url_name == 'gallery' %}menu-open{% elif request.resolver_match.url_name == 'gallery_create' %}menu-open{% endif %}">
+                        <a href="#"
+                           class="nav-link {% if request.resolver_match.url_name == 'gallery' %}active{% elif request.resolver_match.url_name == 'gallery_create' %}active{% endif %}">
+                            <i class="nav-icon fas fa-image"></i>
+                            <p>
+                                گالری عکس
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{% url 'account:gallery' %}"
+                                   class="nav-link {% if request.resolver_match.url_name == 'gallery' %}active{% endif %}">
+                                    <i class="far fas fa-images"></i>
+                                    <p>عکس ها</p>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{% url 'account:gallery_create' %}"
+                                   class="nav-link {% if request.resolver_match.url_name == 'gallery_create' %}active{% endif %}">
+                                    <i class="far fas fa-plus"></i>
+                                    <p>افزودن تصویر</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <p class="nav-header">صفحات</p>
+                    <li class="nav-item">
+                        <a href="{% url 'account:home_update' pk=1 %}"
+                           class="nav-link {% if request.resolver_match.url_name == 'home_update' %}bg-success{% endif %}">
+                            <i class="far fas fa-home"></i>
+                            <p>صفحه اصلی</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{% url 'account:contact_update' pk=1 %}"
+                           class="nav-link {% if request.resolver_match.url_name == 'contact_update' %}bg-success{% endif %}">
+                            <i class="far fa fa-address-card"></i>
+                            <p>صفحه تماس با ما</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{% url 'account:about_update' pk=1 %}"
+                           class="nav-link {% if request.resolver_match.url_name == 'about_update' %}bg-success{% endif %}">
+                            <i class="far fa fa-university"></i>
+                            <p>صفحه درباره ما</p>
+                        </a>
+                    </li>
+                    <p class="nav-header">اطلاعات اصلی</p>
+                    <li class="nav-item">
+                        <a href="{% url 'account:information_update' pk=1 %}"
+                           class="nav-link {% if request.resolver_match.url_name == 'information_update' %}bg-warning{% endif %}">
+                            <i class="far fa fa-database"></i>
+                            <p>اطلاعات اصلی</p>
+                        </a>
+                    </li>
+                    <p class="nav-header">پیام ها</p>
+                    <li class="nav-item">
+                        <a href="{% url 'account:reserve_list' %}"
+                           class="nav-link {% if request.resolver_match.url_name == 'reserve_list' %}bg-info{% endif %}">
+                            <i class="far fa fa-file"></i>
+                            <p>درخواست های مشاوره</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{% url 'account:contact_form_list' %}"
+                           class="nav-link {% if request.resolver_match.url_name == 'contact_form_list' %}bg-info{% endif %}">
+                            <i class="far fa fa-comment"></i>
+                            <p>تماس با ما</p>
+                        </a>
+                    </li>
+                    <p class="nav-header">حساب کاربری</p>
+                    <li class="nav-item">
+                        <a href="{% url 'account:profile' %}"
+                           class="nav-link {% if request.resolver_match.url_name == 'profile' %}bg-warning{% endif %}">
+                            <i class="far fa fa-user"></i>
+                            <p>مشخصات</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{% url 'password_change' %}"
+                           class="nav-link {% if request.resolver_match.url_name == 'password_change' %}bg-warning{% endif %}">
+                            <i class="far fa fa-file"></i>
+                            <p>تغییر رمز</p>
+                        </a>
+                    </li>
+                {% elif not user.is_superuser %}
+                    <p class="nav-header">حساب کاربری</p>
+                    <li class="nav-item">
+                        <a href="{% url 'account:profile' %}"
+                           class="nav-link {% if request.resolver_match.url_name == 'profile' %}bg-warning{% endif %}">
+                            <i class="far fa fa-user"></i>
+                            <p>مشخصات</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{% url 'password_change' %}"
+                           class="nav-link {% if request.resolver_match.url_name == 'password_change' %}bg-warning{% endif %}">
+                            <i class="far fa fa-file"></i>
+                            <p>تغییر رمز</p>
+                        </a>
+                    </li>
+                {% endif %}
+            </ul>
+        </nav>
+    </div>
+</aside>

@@ -1,0 +1,151 @@
+{% extends 'base/main_base.html' %}
+{% load comment_tags %}
+{% load ratings %}
+{% load thumbnail %}
+{% load social_share %}
+{% block seo_tags %}
+    <meta name="description" content="{{ blog.seo_description|striptags }}"/>
+    <meta property="og:locale" content="fa_IR"/>
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="{{ blog.title }}"/>
+    <meta property="og:description" content="{{ blog.seo_description|striptags }}"/>
+    <meta property="og:url" content="{% url 'blog:blogs-list' %}"/>
+    <meta name="keywords" content="{{ blog.keywords }}">
+{% endblock seo_tags %}
+{% block title %}
+    {{ blog.title }}
+{% endblock title %}
+{% block content %}
+    <!-- Blog Details Section Begin -->
+    <section class="services-page rtl spad">
+        <div class="container ">
+            <div class="row">
+                <div class="col-lg-9 order-lg-1">
+                    <section class="blog-details ">
+                        <div class="blog__details__hero set-bg" data-setbg="{{ blog.image.url }}">
+                            <div class="row d-flex justify-content-center rtl ">
+                                <div class="col-lg-7 text-center">
+                                    <div class="blog__hero__text">
+                                        <h2>{{ blog.title }}</h2>
+                                        <ul>
+                                            <li><span class="fa fa-list-ul"></span> دسته‌بندی:
+                                                {% for cat in blog.category.all %}
+                                                    {{ cat.title }}
+                                                {% endfor %}</li>
+                                        </ul>
+                                        <ul>
+                                            <li><span class="fa fa-calendar"></span> تاریخ انتشار: {{ blog.j_publish }}
+                                            </li>
+                                        </ul>
+                                        <ul>
+                                            <li><span class="fa fa-eye"></span> بازدیدها: {{ blog.hits.count }}
+                                            </li>
+                                        </ul>
+                                        <div data-toggle="tooltip">
+                                            {% ratings blog %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row d-flex justify-content-center ">
+                            <div>
+                                <div class="blog__details__social">
+                                    {% post_to_twitter "مقاله جذاب: {{blog.title}}" object_or_url " " "fa fa-twitter mt-3" %}
+                                    {% post_to_telegram "مقاله جذاب: {{blog.title}}" object_or_url " " "fa fa-telegram mt-3" %}
+                                    {% post_to_facebook object_or_url " " "fa fa-facebook mt-3" %}
+                                    {% post_to_whatsapp object_or_url " " "fa fa-whatsapp mt-3" %}
+                                </div>
+                                <div class="blog__details__text pa-15">
+                                    <div class="blog__details__text__item">
+                                        <h2>{{ blog.title }}</h2>
+                                        <p>{{ blog.description|safe }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="blog__details__tag rtl pa-15">
+                                    <p><i class="fa fa-tag"></i> برچسب ها:</p>
+                                    {% for tag in blog.tags.all %}
+                                        <a href="{% url 'blog:tag' tag.slug %}">{{ tag.title }}</a>
+                                    {% endfor %}
+                                </div>
+                                <div class="blog__details__related pa-15 rtl">
+                                    <h3>آخرین مقالات</h3>
+                                    <div class="row">
+                                        {% for single in blogs %}
+                                            <div class="col-lg-4 col-md-6 col-sm-6">
+                                                <div class="blog__item">
+                                                    <div class="blog__item__pic">
+                                                        {% thumbnail single.image_thumbnail "262x200" crop="center" as im %}
+                                                            <img src="{{ im.url }}" width="{{ im.width }}"
+                                                                 height="{{ im.height }}">
+                                                        {% endthumbnail %}
+                                                    </div>
+                                                    <div class="blog__item__text">
+                                                        <h5>
+                                                            <a href="{% url 'blog:blog_detail' single.slug %}">{{ single.title }}</a>
+                                                        </h5>
+                                                        <span>{{ single.j_publish }}</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                                <div class="blog__details__comment pa-15 rtl">
+                                    <h3>ارسال نظرات</h3>
+                                    {% render_comments blog request %}
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                <div class="col-lg-3 order-lg-2">
+                    <div class="services__sidebar">
+                        <div class="services__accordion">
+                            <div class="accordion" id="accordionExample">
+                                <div class="card">
+                                    <div class="card-heading active">
+                                        <a data-toggle="collapse" data-target="#collapseOne">
+                                            دسته‌بندی ها
+                                        </a>
+                                    </div>
+                                    <div id="collapseOne" class="collapse show" data-parent="#accordionExample">
+                                        <div class="card-body">
+                                            <ul>
+                                                {% for cat in category %}
+                                                    <li><a href="{% url 'blog:category' cat.slug %}">{{ cat.title }}</a>
+                                                    </li>
+                                                {% endfor %}
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-heading">
+                                        <a data-toggle="collapse" data-target="#collapseTwo">
+                                            مقالات پربازدید
+                                        </a>
+                                    </div>
+                                    <div id="collapseTwo" class="collapse" data-parent="#accordionExample">
+                                        <div class="card-body">
+                                            <ul>
+                                                {% for blog in popular %}
+                                                    <li>
+                                                        <a href="{% url 'blog:blog_detail' blog.slug %}">{{ blog.title }}</a>
+                                                    </li>
+                                                {% endfor %}
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Blog Details Section End -->
+{% endblock content %}

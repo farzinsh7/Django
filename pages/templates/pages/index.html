@@ -1,0 +1,418 @@
+{% extends 'base/main_base.html' %}
+{% load static %}
+{% load ratings %}
+{% load gravatar %}
+{% load thumbnail %}
+{% load widget_tweaks %}
+{% block seo_tags %}
+    <meta name="description" content="{{ home.seo_description }}"/>
+    <meta property="og:locale" content="fa_IR"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:title" content="{{ home.title }}"/>
+    <meta property="og:description" content="{{ home.seo_description }}"/>
+    <meta property="og:url" content="{% url 'page:home' %}"/>
+    <meta name="keywords" content="{{ home.keywords }}">
+{% endblock seo_tags %}
+{% block title %}
+    {#    {{ home.title }}#}
+{% endblock title %}
+{% block content %}
+    <!-- Hero Section Begin -->
+    <section class="hero spad rtl set-b element-style">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="hero__text rtl">
+                        {#                        <span class='text-right'>{{ home.title }}</span>#}
+                        <h2>کلینیک تخصصی افرا کاشت</h2>
+                        <a href="{% url 'page:contact-us' %}" class="primary-btn normal-btn border-0">تماس با ما</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Hero Section End -->
+    <!-- Consultation Section Begin -->
+    <section class="consultation rtl">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="consultation__form">
+                        <div class="section-title">
+                            <span>درخواست برای</span>
+                            <h2>مشاوره</h2>
+                        </div>
+                        <form action="#" method="post">
+                            {% csrf_token %}
+                            {% render_field form.name placeholder+="نام و نام خانوادگی" %}
+                            {% render_field form.phone placeholder+="شماره تماس" %}
+                            {% render_field form.category %}
+                            <button class="site-btn">رزرو درخواست</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-lg-8">
+                    <div class="consultation__text">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6">
+                                <div class="consultation__text__item">
+                                    <div class="section-title">
+                                        <h2>{{ home.title }}</h2>
+                                        <span>خوش آمدید</span>
+                                    </div>
+                                    <p>{{ home.about_us|truncatewords:35 }}</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6">
+                                <div class="consultation__video set-bg"
+                                     data-setbg="{% static "img/consultation-video.jpg" %}">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Consultation Section End -->
+    <!-- Chooseus Section Begin -->
+    <section class="chooseus rtl spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="section-title">
+                        <span>چرا ما؟</span>
+                        <h2>پیشنهاد برای شما</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="chooseus__item">
+                        <img class="icon-pic" src="{% static 'img/icons/hair-1.png' %}" alt="">
+                        <h5>عنوان اول</h5>
+                        <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک
+                            است. </p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="chooseus__item">
+                        <img class="icon-pic" src="{% static 'img/icons/micro.png' %}" alt="">
+                        <h5>عنوان دوم</h5>
+                        <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک
+                            است. </p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="chooseus__item">
+                        <img class="icon-pic" src="{% static 'img/icons/hair.png' %}" alt="">
+                        <h5>عنوان سوم</h5>
+                        <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک
+                            است. </p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="chooseus__item">
+                        <img class="icon-pic" src="{% static 'img/icons/hair-3.png' %}" alt="">
+                        <h5>عنوان چهارم</h5>
+                        <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک
+                            است. </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Chooseus Section End -->
+    <!-- Services Section Begin -->
+    <section class="services spad rtl set-bg" data-setbg="{% static "img/services-bg.jpg" %}">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-8 col-sm-6">
+                    <div class="section-title">
+                        <span>خدمات ما</span>
+                        <h2>پیشنهادی برای شما</h2>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-6">
+                    <div class="services__btn">
+                        <a href="{% url 'page:contact-us' %}" class="primary-btn">تماس با ما</a>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6 col-md-6">
+                    <div class="services__item">
+                        <div class="services__item__icon">
+                            <img src="{% static 'img/icons/service-1.png' %}" alt="">
+                        </div>
+                        <div class="services__item__text">
+                            <h5>کاشت مو</h5>
+                            <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک
+                                است.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    <div class="services__item">
+                        <div class="services__item__icon">
+                            <img src="{% static 'img/icons/service-2.png' %}" alt="">
+                        </div>
+                        <div class="services__item__text">
+                            <h5>بوتاکس</h5>
+                            <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک
+                                است.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    <div class="services__item">
+                        <div class="services__item__icon">
+                            <img src="{% static 'img/icons/service-4.png' %}" alt="">
+                        </div>
+                        <div class="services__item__text">
+                            <h5>مزوتراپی</h5>
+                            <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک
+                                است.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    <div class="services__item">
+                        <div class="services__item__icon">
+                            <img src="{% static 'img/icons/service-3.png' %}" alt="">
+                        </div>
+                        <div class="services__item__text">
+                            <h5>کاشت ابرو</h5>
+                            <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک
+                                است.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Services Section End -->
+    <!-- Testimonials Section Begin -->
+    <section class="testimonials ltr spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="section-title">
+                        <span>نظرات</span>
+                        <h2>مشتریان</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="testimonial__slider owl-carousel">
+                    <div class="col-lg-6">
+                        <div class="testimonial__item">
+                            <div class="testimonial__author">
+                                <div class="testimonial__author__icon">
+                                    <i class="fa fa-quote-left"></i>
+                                </div>
+                                <div class="testimonial__author__text">
+                                    <h5>نیلوفر</h5>
+                                    <span>کاشت ابرو</span>
+                                </div>
+                            </div>
+                            <div class="rating">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                            </div>
+                            <p class="customer-idea">کار با این کلینیک برای من خیلی لذت بخش بود و واقعا از کارشون راضی
+                                هستم.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="testimonial__item">
+                            <div class="testimonial__author">
+                                <div class="testimonial__author__icon">
+                                    <i class="fa fa-quote-left"></i>
+                                </div>
+                                <div class="testimonial__author__text">
+                                    <h5>علیرضا</h5>
+                                    <span>کاشت مو</span>
+                                </div>
+                            </div>
+                            <div class="rating">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                            </div>
+                            <p class="customer-idea">من برای کاشت مو با این کلینیک از طریق یکی از دوستان آشنا شدم و الان
+                                از نتیجه کارم با توجه به بانک مو ضعیفی که داشتم راضیم.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="testimonial__item">
+                            <div class="testimonial__author">
+                                <div class="testimonial__author__icon">
+                                    <i class="fa fa-quote-left"></i>
+                                </div>
+                                <div class="testimonial__author__text">
+                                    <h5>هانیه</h5>
+                                    <span>کاشت ابرو</span>
+                                </div>
+                            </div>
+                            <div class="rating">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                            </div>
+                            <p class="customer-idea">تمیزی، محیط دوستانه و همچنین دقت عمل دکتران این کلینیک باعث شد که
+                                من این مجموعه را برای کاشت ابرو های خودم انتخاب کنم.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="testimonial__item">
+                            <div class="testimonial__author">
+                                <div class="testimonial__author__icon">
+                                    <i class="fa fa-quote-left"></i>
+                                </div>
+                                <div class="testimonial__author__text">
+                                    <h5>مسعود</h5>
+                                    <span>کاشت مو</span>
+                                </div>
+                            </div>
+                            <div class="rating">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                            </div>
+                            <p class="customer-idea">هزینه منطقی و در نهایت نتیجه قابل قبول برای من موجب شده این کلینیک
+                                رو به دوستان و آشنایان خود معرفی کنم.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="testimonial__item">
+                            <div class="testimonial__author">
+                                <div class="testimonial__author__icon">
+                                    <i class="fa fa-quote-left"></i>
+                                </div>
+                                <div class="testimonial__author__text">
+                                    <h5>ترانه</h5>
+                                    <span>بوتاکس</span>
+                                </div>
+                            </div>
+                            <div class="rating">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                            </div>
+                            <p class="customer-idea">خوشحالم از اینکه دوستم اینجا رو به من معرفی کرد و واقعا از نتیجه
+                                بوتاکس پیشونی خودم راضیم.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="testimonial__item">
+                            <div class="testimonial__author">
+                                <div class="testimonial__author__icon">
+                                    <i class="fa fa-quote-left"></i>
+                                </div>
+                                <div class="testimonial__author__text">
+                                    <h5>مریم</h5>
+                                    <span>کاشت ابرو</span>
+                                </div>
+                            </div>
+                            <div class="rating">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                            </div>
+                            <p class="customer-idea">من کار کاشت ابروهام رو با کلینیک هنر کاشت انجام دادم به نظر من و
+                                اطرافیان واقعا طبیعی در اومده ممنون از این تجربه لذت بخش.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Testimonials Section End -->
+    <!-- Gallery Begin -->
+    <section class="latest rtl spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-8 col-sm-6">
+                    <div class="section-title">
+                        <span>آخرین</span>
+                        <h2>نمونه کارها</h2>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-6">
+                    <div class="latest__btn">
+                        <a href="{% url 'page:gallery' %}" class="primary-btn">نمایش همه تصاویر</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="gallery">
+        <div class="gallery__container">
+            <div class="grid-sizer"></div>
+            {% for pic in gallery %}
+                <div class="gc__item set-bg" data-setbg="{{ pic.image.url }}">
+                    <a href="{{ pic.image.url }}" class="image-popup"><i class="fa fa-search-plus"></i></a>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    <!-- Gallery End -->
+    <!-- Latest News Begin -->
+    <section class="latest rtl spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-8 col-sm-6">
+                    <div class="section-title">
+                        <span>آخرین اخبار و مقالات</span>
+                        <h2>راهکارهای زیبایی</h2>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-6">
+                    <div class="latest__btn">
+                        <a href="{% url 'blog:blogs-list' %}" class="primary-btn">نمایش همه مقالات</a>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                {% for blog in blogs %}
+                    <div class="col-lg-4 col-md-6 col-sm-6">
+                        <div class="latest__item">
+                            {% thumbnail blog.image_thumbnail "360x200" crop="center" as im %}
+                                <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}">
+                            {% endthumbnail %}
+                            <h5 class='mt-4'><a href="{% url 'blog:blog_detail' blog.slug %}">{{ blog.title }}</a></h5>
+                            <ul class="mb-2">
+                                <li>تاریخ انتشار: {{ blog.j_publish }}</li>
+                            </ul>
+                            {% ratings blog %}
+                            <p>{{ blog.description|striptags|truncatewords:10 }}</p>
+                            <ul>
+                                <li><img src="{% gravatar_url blog.author.email %}" alt="">
+                                    نویسنده: {{ blog.author.get_full_name }}</li>
+                            </ul>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    <!-- Latest News End -->
+{% endblock %}

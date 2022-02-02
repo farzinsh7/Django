@@ -1,0 +1,97 @@
+{% extends 'base/main_base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% block seo_tags %}
+    <meta name="description" content="{{ contact.seo_description }}"/>
+    <meta property="og:locale" content="fa_IR"/>
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="{{ contact.title }}"/>
+    <meta property="og:description" content="{{ contact.seo_description }}"/>
+    <meta property="og:url" content="{% url 'page:contact-us' %}"/>
+    <meta name="keywords" content="{{ contact.keywords }}">
+{% endblock seo_tags %}
+{% block title %}
+    {{ contact.title }}
+{% endblock title %}
+{% block content %}
+    <!-- Breadcrumb Section Begin -->
+    <section class="breadcrumb-option spad set-bg" data-setbg="{% static 'img/breadcrumb-bg.jpg' %}">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="breadcrumb__text">
+                        <h2>تماس با ما</h2>
+                        <div class="breadcrumb__links">
+                            <a href="{% url 'page:home' %}">خانه</a>
+                            <span>تماس با ما</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Breadcrumb Section End -->
+    <!-- Contact Section Begin -->
+    <section class="contact rtl spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-4 col-sm-6">
+                    <div class="contact__widget">
+                        <div class="contact__widget__icon">
+                            <i class="fa fa-map-marker"></i>
+                        </div>
+                        <div class="contact__widget__text">
+                            <h5>آدرس</h5>
+                            <p><a href="#">{{ contact.address }}</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-6">
+                    <div class="contact__widget">
+                        <div class="contact__widget__icon">
+                            <i class="fa fa-phone"></i>
+                        </div>
+                        <div class="contact__widget__text">
+                            <h5>شماره تماس</h5>
+                            <p><a href="tel:{{ contact.phone }}">{{ contact.phone }}</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-6">
+                    <div class="contact__widget">
+                        <div class="contact__widget__icon">
+                            <i class="fa fa-envelope"></i>
+                        </div>
+                        <div class="contact__widget__text">
+                            <h5>ایمیل</h5>
+                            <p><a href="mailto:{{ contact.email }}">{{ contact.email|title }}</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="contact__content">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6">
+                        <div class="contact__pic">
+                            <img src="{% static 'img/contact-pic.jpg' %}" alt="">
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                        <div class="contact__form">
+                            <h3>با ما در تماس باشید</h3>
+                            <form action="#" method="post">
+                                {% csrf_token %}
+                                {% render_field form.name placeholder+="نام و نام خانوادگی" %}
+                                {% render_field form.phone placeholder+="شماره تماس" %}
+                                {% render_field form.email placeholder+="ایمیل" %}
+                                {% render_field form.description placeholder+="متن پیام" %}
+                                <button type="submit" class="site-btn">ارسال پیام</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Contact Section End -->
+{% endblock content %}

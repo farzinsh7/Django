@@ -1,0 +1,157 @@
+{% extends 'base/main_base.html' %}
+{% load static %}
+{% block seo_tags %}
+    <meta name="description" content="متخصصین و دکترهای کلینیک افرا کاشت"/>
+    <meta property="og:locale" content="fa_IR"/>
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="دکترهای کلینیک افرا کاشت"/>
+    <meta property="og:description" content="متخصصین و دکترهای کلینیک افرا کاشت"/>
+    <meta property="og:url" content="{% url 'page:doctors' %}"/>
+{% endblock seo_tags %}
+{% block title %}
+    دکترهای کلینیک هنر کاشت
+{% endblock title %}
+{% block content %}
+    <!-- Breadcrumb Section Begin -->
+    <section class="breadcrumb-option spad set-bg" data-setbg="{% static 'img/breadcrumb-bg.jpg' %}">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="breadcrumb__text">
+                        <h2>تیم ما</h2>
+                        <div class="breadcrumb__links">
+                            <a href="{% url 'page:home' %}">خانه</a>
+                            <span>دکترها</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Breadcrumb Section End -->
+    <!-- Doctor Section Begin -->
+    <section class="doctor rtl spad">
+        <div class="container">
+            <div class="doctor__item">
+                <div class="row">
+                    <div class="col-lg-6 order-lg-1">
+                        <div class="doctor__item__pic">
+                            <img src="{% static 'img/doctor/doctor-1.jpg' %}" alt="">
+                        </div>
+                    </div>
+                    <div class="col-lg-6 order-lg-2">
+                        <div class="doctor__item__text">
+                            <span>عنوان دکتر شماره یک</span>
+                            <h2>نام دکتر شماره یک</h2>
+                            <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک
+                                است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط
+                                فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد.</p>
+                            <ul>
+                                <li><i class="fa fa-check-circle"></i> پذیرش بیماران</li>
+                                <li><i class="fa fa-check-circle"></i> مراقیت ویژه از بیماران</li>
+                                <li><i class="fa fa-check-circle"></i> ساخت محیط امن</li>
+                                <li><i class="fa fa-check-circle"></i> و ادامه کاهای این دکتر.</li>
+                            </ul>
+                            <div class="doctor__item__social">
+                                <a href="#"><i class="fa fa-facebook"></i></a>
+                                <a href="#"><i class="fa fa-twitter"></i></a>
+                                <a href="#"><i class="fa fa-instagram"></i></a>
+                                <a href="#"><i class="fa fa-dribbble"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="doctor__item">
+                <div class="row">
+                    <div class="col-lg-6 order-lg-4">
+                        <div class="doctor__item__pic">
+                            <img src="{% static 'img/doctor/doctor-2.jpg' %}" alt="">
+                        </div>
+                    </div>
+                    <div class="col-lg-6 order-lg-3">
+                        <div class="doctor__item__text  doctor__item__text--left">
+                            <span>عنوان دکتر شماره دو</span>
+                            <h2>نام دکتر شماره دو</h2>
+                            <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک
+                                است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط
+                                فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد.</p>
+                            <ul>
+                                <li><i class="fa fa-check-circle"></i> پذیرش بیماران</li>
+                                <li><i class="fa fa-check-circle"></i> مراقیت ویژه از بیماران</li>
+                                <li><i class="fa fa-check-circle"></i> ساخت محیط امن</li>
+                                <li><i class="fa fa-check-circle"></i> و ادامه کاهای این دکتر.</li>
+                            </ul>
+                            <div class="doctor__item__social">
+                                <a href="#"><i class="fa fa-facebook"></i></a>
+                                <a href="#"><i class="fa fa-twitter"></i></a>
+                                <a href="#"><i class="fa fa-instagram"></i></a>
+                                <a href="#"><i class="fa fa-dribbble"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="doctor__item">
+                <div class="row">
+                    <div class="col-lg-6 order-lg-5">
+                        <div class="doctor__item__pic">
+                            <img src="{% static 'img/doctor/doctor-3.jpg' %}" alt="">
+                        </div>
+                    </div>
+                    <div class="col-lg-6 order-lg-6">
+                        <div class="doctor__item__text">
+                            <span>عنوان دکتر شماره سه</span>
+                            <h2>نام دکتر شماره سه</h2>
+                            <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک
+                                است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط
+                                فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد.</p>
+                            <ul>
+                                <li><i class="fa fa-check-circle"></i> پذیرش بیماران</li>
+                                <li><i class="fa fa-check-circle"></i> مراقیت ویژه از بیماران</li>
+                                <li><i class="fa fa-check-circle"></i> ساخت محیط امن</li>
+                                <li><i class="fa fa-check-circle"></i> و ادامه کاهای این دکتر.</li>
+                            </ul>
+                            <div class="doctor__item__social">
+                                <a href="#"><i class="fa fa-facebook"></i></a>
+                                <a href="#"><i class="fa fa-twitter"></i></a>
+                                <a href="#"><i class="fa fa-instagram"></i></a>
+                                <a href="#"><i class="fa fa-dribbble"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="doctor__item">
+                <div class="row">
+                    <div class="col-lg-6 order-lg-8">
+                        <div class="doctor__item__pic">
+                            <img src="{% static 'img/doctor/doctor-4.jpg' %}" alt="">
+                        </div>
+                    </div>
+                    <div class="col-lg-6 order-lg-7">
+                        <div class="doctor__item__text doctor__item__text--left">
+                            <span>عنوان دکتر شماره چهار</span>
+                            <h2>نام دکتر شماره چهار</h2>
+                            <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک
+                                است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط
+                                فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد.</p>
+                            <ul>
+                                <li><i class="fa fa-check-circle"></i> پذیرش بیماران</li>
+                                <li><i class="fa fa-check-circle"></i> مراقیت ویژه از بیماران</li>
+                                <li><i class="fa fa-check-circle"></i> ساخت محیط امن</li>
+                                <li><i class="fa fa-check-circle"></i> و ادامه کاهای این دکتر.</li>
+                            </ul>
+                            <div class="doctor__item__social">
+                                <a href="#"><i class="fa fa-facebook"></i></a>
+                                <a href="#"><i class="fa fa-twitter"></i></a>
+                                <a href="#"><i class="fa fa-instagram"></i></a>
+                                <a href="#"><i class="fa fa-dribbble"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock content %}

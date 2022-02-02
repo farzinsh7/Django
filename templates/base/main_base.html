@@ -1,0 +1,22 @@
+{% load render_partial %}
+{% load static %}
+<!DOCTYPE html>
+<html dir="rtl" lang="fa-IR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name='robots' content='index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'/>
+    <title>{% block title %}{% endblock title %}- کلینیک تخصصی زیبایی | کاشت مو | کاشت ابرو | مزوتراپی | بوتاکس </title>
+    {% block seo_tags %}{% endblock seo_tags %}
+    <link rel="shortcut icon" href="{% static 'img/icons/afrafavicon.png' %}" type="image/gif" sizes="192x192">
+    <meta property="og:site_name" content=" کلینیک تخصصی زیبایی | کاشت مو | کاشت ابرو | مزوتراپی | بوتاکس"/>
+    {% include 'base/_header_refrences.html' %}
+</head>
+<body>
+{% render_partial 'page:head' %}
+{% block content %}
+{% endblock %}
+{% render_partial 'page:foot' %}
+{% include 'base/_footer_refrences.html' %}
+</body>
+</html>

@@ -1,0 +1,34 @@
+{% extends 'registration/base.html' %}
+{% load crispy_forms_tags %}
+{% block meta_title %}{% block title %}ویرایش اطلاعات صفحه درباره ما{% endblock %}{% endblock %}
+{% block content %}
+    <div class="col-lg-10 mx-auto">
+        <div class="card card-primary">
+            <div class="card-header">
+                <h3>صفحه درباره ما</h3>
+            </div>
+            <!-- /.card-header -->
+            <!-- form start -->
+            <form role="form" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="form-row mx-4 my-4">
+                    <div class="form-group col-md-6 mb-0">
+                        {{ form.title|as_crispy_field }}
+                    </div>
+                    <div class="form-group col-md-6 mb-0">
+                        {{ form.keywords|as_crispy_field }}
+                    </div>
+                    <div class="form-group col-md-6 mb-0">
+                        {{ form.about|as_crispy_field }}
+                    </div>
+                    <div class="form-group col-md-6 mb-0">
+                        {{ form.seo_description|as_crispy_field }}
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <button type="submit" class="btn btn-primary">ویرایش اطلاعات</button>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

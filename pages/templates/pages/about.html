@@ -1,0 +1,116 @@
+{% extends 'base/main_base.html' %}
+{% load static %}
+{% block seo_tags %}
+    <meta name="description" content="{{ about.seo_description }}"/>
+    <meta property="og:locale" content="fa_IR"/>
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="{{ about.title }}"/>
+    <meta property="og:description" content="{{ about.seo_description }}"/>
+    <meta property="og:url" content="{% url 'page:about-us' %}"/>
+{% endblock seo_tags %}
+{% block title %}
+    {{ about.title }}
+{% endblock title %}
+{% block content %}
+    <!-- Breadcrumb Section Begin -->
+    <section class="breadcrumb-option spad set-bg" data-setbg="{% static 'img/breadcrumb-bg.jpg' %}">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="breadcrumb__text">
+                        <h2>درباره ما</h2>
+                        <div class="breadcrumb__links">
+                            <a href="{% url 'page:home' %}">خانه</a>
+                            <span>درباه ما</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Breadcrumb Section End -->
+    <!-- About Section Begin -->
+    <section class="about spad rtl">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-6">
+                    <div class="about__video set-bg" data-setbg="{% static 'img/about-video.jpg' %}">
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    <div class="about__text">
+                        <div class="section-title">
+                            <span>درباره کلینیک هنر کاشت</span>
+                            <h3>به کلینیک افرا کاشت خوش آمدید</h3>
+                        </div>
+                        <p>{{ about.about }}</p>
+                        <span>از دیگر خدمات این کلینیک: </span>
+                        <ul>
+                            <li><i class="fa fa-check-circle"></i> کاشت مو</li>
+                            <li><i class="fa fa-check-circle"></i> کاشت ابرو</li>
+                            <li><i class="fa fa-check-circle"></i> مزوتراپی</li>
+                            <li><i class="fa fa-check-circle"></i> بوتاکس</li>
+                        </ul>
+                        <a href="{% url 'page:contact-us' %}" class="primary-btn normal-btn">تماس با ما</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- About Section End -->
+{#    <!-- Team Section Begin -->#}
+{#    <section class="team spad">#}
+{#        <div class="container">#}
+{#            <div class="row">#}
+{#                <div class="col-lg-12 text-center">#}
+{#                    <div class="section-title">#}
+{#                        <span>تیم ما</span>#}
+{#                        <h2>تجربیات دکتران ما</h2>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{#            <div class="row">#}
+{#                <div class="col-lg-4 col-md-6 col-sm-6">#}
+{#                    <div class="team__item">#}
+{#                        <img src="{% static 'img/team/team-1.jpg' %}" alt="">#}
+{#                        <h5>دکتر اول</h5>#}
+{#                        <span>تخصص اول</span>#}
+{#                        <div class="team__item__social">#}
+{#                            <a href="#"><i class="fa fa-facebook"></i></a>#}
+{#                            <a href="#"><i class="fa fa-twitter"></i></a>#}
+{#                            <a href="#"><i class="fa fa-instagram"></i></a>#}
+{#                            <a href="#"><i class="fa fa-dribbble"></i></a>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
+{#                <div class="col-lg-4 col-md-6 col-sm-6">#}
+{#                    <div class="team__item">#}
+{#                        <img src="{% static 'img/team/team-2.jpg' %}" alt="">#}
+{#                        <h5>دکتر دوم</h5>#}
+{#                        <span>تخصص دوم</span>#}
+{#                        <div class="team__item__social">#}
+{#                            <a href="#"><i class="fa fa-facebook"></i></a>#}
+{#                            <a href="#"><i class="fa fa-twitter"></i></a>#}
+{#                            <a href="#"><i class="fa fa-instagram"></i></a>#}
+{#                            <a href="#"><i class="fa fa-dribbble"></i></a>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
+{#                <div class="col-lg-4 col-md-6 col-sm-6">#}
+{#                    <div class="team__item">#}
+{#                        <img src="{% static 'img/team/team-3.jpg' %}" alt="">#}
+{#                        <h5>دکتر سوم</h5>#}
+{#                        <span>تخصص سوم</span>#}
+{#                        <div class="team__item__social">#}
+{#                            <a href="#"><i class="fa fa-facebook"></i></a>#}
+{#                            <a href="#"><i class="fa fa-twitter"></i></a>#}
+{#                            <a href="#"><i class="fa fa-instagram"></i></a>#}
+{#                            <a href="#"><i class="fa fa-dribbble"></i></a>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+{#    </section>#}
+    <!-- Team Section End -->
+{% endblock content %}

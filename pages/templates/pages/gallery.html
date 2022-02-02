@@ -1,0 +1,67 @@
+{% extends 'base/main_base.html' %}
+{% load static %}
+{% load ratings %}
+{% load gravatar %}
+{% load widget_tweaks %}
+{% block seo_tags %}
+        <meta name="description" content="نمونه کارهای افرا کاشت"/>
+    <meta property="og:locale" content="fa_IR"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:title" content="گالری تصاویر"/>
+    <meta property="og:description" content="نمونه کارهای افرا کاشت"/>
+    <meta property="og:url" content="{% url 'page:gallery' %}"/>
+{% endblock seo_tags %}
+{% block title %}
+    گالری تصاویر
+{% endblock title %}
+{% block content %}
+    <!-- Breadcrumb Section Begin -->
+    <section class="breadcrumb-option spad set-bg" data-setbg="{% static 'img/breadcrumb-bg.jpg' %}">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="breadcrumb__text">
+                        <h2>گالری تصاویر</h2>
+                        <div class="breadcrumb__links">
+                            <a href="{% url 'page:home' %}">خانه</a>
+                            <span>گالری تصاویر</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Breadcrumb Section End -->
+    <!-- Gallery Begin -->
+
+    <div class="section-title text-center mt-5">
+                        <h2>نمونه کارها</h2>
+                    </div>
+        <div class="gallery my-5">
+            <div class="gallery__container">
+                <div class="grid-sizer"></div>
+                {% for pic in object_list %}
+                    <div class="gc__item set-bg" data-setbg="{{ pic.image.url }}">
+                    <a href="{{ pic.image.url }}" class="image-popup"><i class="fa fa-search-plus"></i></a>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+            <!-- Gallery End -->
+            <div class="col-lg-12 text-center">
+                <ul class="pagination">
+                    {% if page_obj.has_previous %}
+                        <li><a href="?page={{ page_obj.previous_page_number }}">«</a></li>
+                    {% endif %}
+                    {% for page in paginator.page_range %}
+                        <li class="{% if page == page_obj.number %}active{% endif %}"><a
+                                href="?page={{ page }}">{{ page }}</a></li>
+                    {% endfor %}
+                    {% if page_obj.has_next %}
+                        <li><a href="?page={{ page_obj.next_page_number }}">»</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,89 @@
+{% load static %}
+<!-- Page Preloder -->
+<div id="preloder">
+    <div class="loader"></div>
+</div>
+<!-- Offcanvas Menu Begin -->
+<div class="offcanvas-menu-overlay"></div>
+<div class="offcanvas-menu-wrapper rtl">
+    <div class="offcanvas__logo">
+        <a href="{{ info.title }}"><img src="{{ info.logo.url }}" alt="#"></a>
+    </div>
+    <div id="mobile-menu-wrap"></div>
+    <ul class="offcanvas__widget">
+        <li><i class="fa fa-phone"></i>{{ info.phone }}</li>
+        <li><i class="fa fa-map-marker"></i>{{ info.address }}</li>
+        <li><i class="fa fa-clock-o"></i> ساعت کاری</li>
+    </ul>
+    <div class="offcanvas__social ltr">
+        <a href="{{ info.telegram }}"><i class="fa fa-telegram"></i></a>
+        <a href="{{ info.instagram }}"><i class="fa fa-instagram"></i></a>
+        <a href="{{ info.whatsapp }}"><i class="fa fa-linkedin"></i></a>
+    </div>
+</div>
+<!-- Offcanvas Menu End -->
+<!-- Header Section Begin -->
+<header class="header">
+    <div class="header__top">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-8">
+                    <ul class="header__top__right ">
+                        <li><i class="fa fa-phone"></i> {{ info.phone }}</li>
+                        <li><i class="fa fa-map-marker"></i> {{ info.address }}</li>
+                        <li><i class="fa fa-clock-o"></i> #</li>
+                    </ul>
+                </div>
+                <div class="col-lg-4">
+                    <div class="header__top__left ">
+                        <a href="{{ info.telegram }}"><i class="fa fa-telegram"></i></a>
+                        <a href="{{ info.instagram }}"><i class="fa fa-instagram"></i></a>
+                        <a href="{{ info.whatsapp }}"><i class="fa fa-whatsapp"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10">
+                <div class="header__menu__option ">
+                    <nav class="header__menu">
+                        <ul>
+                            <li class="{% if request.resolver_match.url_name == 'home' %}active{% endif %}"
+                            ><a href="{% url 'page:home' %}">خانه</a>
+                            </li>
+                            <li class="{% if request.resolver_match.url_name == 'blogs-list' %}active{% endif %}"><a
+                                    href="{% url 'blog:blogs-list' %}">مقالات</a></li>
+                            <li><a href="#">خدمات</a>
+                                <ul class="dropdown">
+                                    <li><a href="#">کاشت مو</a></li>
+                                    <li><a href="#">کاشت ابرو</a></li>
+                                    <li><a href="#">بوتاکس</a></li>
+                                    <li><a href="#">مزوتراپی</a></li>
+                                </ul>
+                            </li>
+                            <li class="{% if request.resolver_match.url_name == 'about-us' %}active{% endif %}"><a
+                                    href="{% url 'page:about-us' %}">درباره ما</a></li>
+                            {#                            <li class="{% if request.resolver_match.url_name == 'doctors' %}active{% endif %}"><a#}
+                            {#                                    href="{% url 'page:doctors' %}">دکترها</a></li>#}
+                            <li class="{% if request.resolver_match.url_name == 'contact-us' %}active{% endif %}"><a
+                                    href="{% url 'page:contact-us' %}">تماس با ما</a></li>
+                            <li class="{% if request.resolver_match.url_name == 'profile' %}active{% endif %}"><a
+                                    href="{% url 'account:profile' %}">حساب کاربری</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+            <div class="col-lg-2">
+                <div class="header__logo">
+                    <a href="{% url 'page:home' %}"><img src="{{ info.logo.url }}" alt="{{ info.title }}"></a>
+                </div>
+            </div>
+        </div>
+        <div class="canvas__open">
+            <i class="fa fa-bars"></i>
+        </div>
+    </div>
+</header>
+<!-- Header Section End -->
